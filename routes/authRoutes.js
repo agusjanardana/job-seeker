@@ -16,6 +16,6 @@ router.get('/', (req, res) => {
    res.render('home');
 });
 router.get('/job', (req, res) => {
-   res.render('smoothies');
+   res.render('job');
 });
 module.exports = router;

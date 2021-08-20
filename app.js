@@ -13,12 +13,12 @@ app.use(express.json());
 
 // view engine
 app.set('view engine', 'ejs');
+require('dotenv').config();
 
 // database connection
-const dbURI =
-   'mongodb+srv://db_test:240990@cluster0.pgmgk.mongodb.net/node-auth?retryWrites=true&w=majority';
+
 mongoose
-   .connect(dbURI, {
+   .connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
