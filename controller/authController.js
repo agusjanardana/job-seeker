@@ -34,6 +34,7 @@ exports.login_get = (req, res) => {
 
 exports.register_post = async (req, res) => {
    const { email, password } = req.body;
+
    if (!req.body) {
       res.status(400).send({
          message: 'Ada field yang kosong',
