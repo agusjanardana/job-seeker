@@ -38,6 +38,18 @@ userSchema.pre('save', async function (next) {
     next();
 });
 
+//buat method sendiri, sejenis buat save,create,delete.
+userSchema.statics.login = async function (email, password) {
+    const user = await this.findOne({ email: email });
+    if (user) {
+        const auth = await bcrypt.compare(password, user.password);
+        if (auth) {
+            return user;
+        }
+        throw Error('Password Salah');
+    }
+    throw Error('salah email');
+};
 const User = mongoose.model('user', userSchema);
 
 module.exports = User;
