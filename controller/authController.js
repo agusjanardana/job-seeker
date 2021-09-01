@@ -73,8 +73,15 @@ exports.login_post = async (req, res) => {
     try {
         const user = await User.login(email, password);
         const token = createToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxTime * 1000 });
-        res.status(200).json({ user: user._id });
+        // res.cookie('jwt', token, { httpOnly: true, maxAge: maxTime * 1000 });
+        // res.status(200).json({ user: user._id });
+        return res.status(200).json({
+            'status': 'success',
+            'message': 'sukses login',
+            'data': {
+                'token': token,
+            },
+        });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
