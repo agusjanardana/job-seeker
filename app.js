@@ -6,6 +6,7 @@ const app = express();
 
 //get route
 const mainRoutes = require('./routes/authRoutes');
+const { checkUser } = require('./middleware/authMiddleware.js');
 
 /*
  *middleware
